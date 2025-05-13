@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         templateContext: {
           userFirstname: firstName || 'User',
-          lastCallTranscript: lastCallTranscript || ''
+          lastCallTranscript: lastCallTranscript || 'No previous call. This is the first call'
         },
         initialMessages: [],
         metadata: {},
