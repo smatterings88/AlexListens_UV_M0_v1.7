@@ -15,7 +15,7 @@ export default function HomePage() {
   const [isStarted, setIsStarted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showTranscripts, setShowTranscripts] = useState(true);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>(null);
   const [isSignInOpen, setIsSignInOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -148,7 +148,7 @@ export default function HomePage() {
 
         if (!res.ok) {
           const errorData = await res.json();
-          setError(`Failed to create call: ${errorData.error || res.statusText}`);
+          setError(`Failed to start call: ${errorData.error || res.statusText}`);
           return;
         }
 
@@ -201,15 +201,10 @@ export default function HomePage() {
             userUID: user?.uid
           });
 
-          if (currentTranscriptsRef.current.length > 0) {
+          if (currentTranscriptsRef.current.length > 0 && user) {
             await saveCallMemory(currentTranscriptsRef.current);
           } else {
             console.log('No transcripts to save at call end');
-          }
-
-          // Refresh latest call reference after the call ends
-          if (user) {
-            await getLatestCallTranscripts(user.uid);
           }
         });
 
