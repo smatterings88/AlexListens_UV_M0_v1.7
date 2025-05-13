@@ -1,5 +1,5 @@
-import { AsyncMemoryClient } from 'mem0ai';
+import { MemoryClient } from 'mem0ai';
 
-export const mem0Client = new AsyncMemoryClient({
+export const mem0Client = new MemoryClient({
   apiKey: process.env.MEM0_API_KEY!,
 });
