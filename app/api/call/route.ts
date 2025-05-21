@@ -41,12 +41,7 @@ export async function POST(request: Request) {
         recordingEnabled: false,
         initialOutputMedium: "MESSAGE_MEDIUM_VOICE",
         firstSpeakerSettings: {
-          user: {
-            fallback: {
-              text: "Hello! I'm ready to start our conversation.",
-              delay: "1s"
-            }
-          }
+          agent: {}
         },
         experimentalSettings: {}
       }),
